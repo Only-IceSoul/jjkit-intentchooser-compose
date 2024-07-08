@@ -20,12 +20,23 @@ dependencyResolutionManagement {
 		}
 	}
 ```
+2.- 
 
-
-2.-libs.versions.toml
+gradle-wrapper.properties  8.6 to 8.7 
 
 ```
-intentChooser = "1.0"
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.7-bin.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+
+```
+
+2B.-libs.versions.toml
+
+```
+intentChooser = "1.1"
 
 jjkit-intentchooser = { module = "com.github.Only-IceSoul:jjkit-intentchooser-compose", version.ref = "intentChooser" }
 

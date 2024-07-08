@@ -8,9 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.net.Uri
-import android.provider.MediaStore
 import android.provider.Settings
-import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
@@ -37,7 +35,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -67,9 +64,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import java.util.regex.Pattern
 import kotlin.math.ceil
-import kotlin.math.roundToInt
 
 
 object IntentChooser {
@@ -302,10 +297,9 @@ object IntentChooser {
             }
 
             mIntentSecondaryList.forEach { pIntent ->
-                val int = pIntent as Intent
-                val list = context.packageManager.queryIntentActivities(int, 0)
-                list.forEach{
-                    mapIntents[it.activityInfo.name] = int
+                val list = context.packageManager.queryIntentActivities(pIntent, 0)
+                list.forEach {
+                    mapIntents[it.activityInfo.name] = pIntent
                 }
                 listIntents.addAll(list)
             }

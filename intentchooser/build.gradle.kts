@@ -64,7 +64,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.jjkit"
             artifactId = "intentchooser"
-            version = "1.0"
+            version = "1.1"
 
             afterEvaluate {
                 from(components["release"])
