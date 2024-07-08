@@ -1,4 +1,4 @@
-//package com.jjkit.intentchooser
+package com.jjkit.intentchooser
 //
 //import android.app.Activity
 //import android.content.ComponentName
