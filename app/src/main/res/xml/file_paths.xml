@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+<!--    <external-path-->
+<!--        name="Images"-->
+<!--        path="SampleIntentChooser/Images/" />-->
+<!--    <external-path-->
+<!--        name="Videos"-->
+<!--        path="SampleIntentChooser/Videos/" />-->
+    <external-cache-path
+        name="cacheExternal"
+        path="." />
+    <external-path
+        name="external"
+        path="." />
+</paths>

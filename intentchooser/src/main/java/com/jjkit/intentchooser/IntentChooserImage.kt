@@ -1,56 +1,15 @@
-# IntentChooser Compose
+package com.jjkit.intentchooser
 
-Simple intent chooser
-
-API SDK >= 24 
-
-<image src="./res/demo.gif" width="300" >
-
-
-
-## INSTALLATION
-
-1.-Add it in your settings.gradle.kts at the end of repositories:
-```
-dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral() //this
-			maven { url 'https://jitpack.io' } or maven("https://jitpack.io")  //this
-		}
-	}
-```
-
-
-2.-libs.versions.toml
-
-```
-intentChooser = "1.0"
-
-jjkit-intentchooser = { module = "com.github.Only-IceSoul:jjkit-intentchooser-compose", version.ref = "intentChooser" }
-
-```
-3.-build gradle APP
-
-```
-dependencies {
-
-
-    ///
-    implementation(libs.jjkit.intentchooser)
-}
-
-```
-
-
-## USAGE
-
-
- [Example With Animation](./app\src\main\java\com\jjkit\sampleintentchooser/MainActivity.kt)
-
-Example: a IntentChooser for image
-
-```kotlin
+import android.Manifest
+import android.app.Activity
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun IntentChooserImage(enabled:Boolean,authorityFilerProvider:String,
@@ -80,8 +39,7 @@ fun IntentChooserImage(enabled:Boolean,authorityFilerProvider:String,
         }
     }
 
-    val data : IntentChooser.Data = remember {+
-        //SET YOUR INTENTS
+    val data : IntentChooser.Data = remember {
         IntentChooser.Builder(ctx).setIntent(IntentChooser.Helper.getCameraIntentForQuery(ctx,imageName,imageExt,authorityFilerProvider))
             .setSecondariesIntent(listOf(IntentChooser.Helper.makePhotoIntentForQuery()
             )).setIgnore(ignoreActivityInfoNames)
@@ -114,16 +72,13 @@ fun IntentChooserImage(enabled:Boolean,authorityFilerProvider:String,
             //start activity
         }
 
+//        if (ri.activityInfo.name.contains("camera", true)) {
+//            if (PermissionHelper.checkCamera(ctx)) {
+//                launcher.launch(it)
+//            } else {
+//                permissionCamera.launch()
+//            }
+//        }
     }, top = top, bottom = bottom)
 
 }
-
-   
-```
-
-
-
-## LICENSE 
-
-**Apache 2.0**
-
