@@ -51,6 +51,9 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import com.jjkit.intentchooser.IntentChooser
+import com.jjkit.intentchooser.IntentChooserImage
+import com.jjkit.intentchooser.getBitmapSampling
 import com.jjkit.sampleintentchooser.ui.theme.SampleintentchooserTheme
 
 class MainActivity : ComponentActivity() {
@@ -78,109 +81,109 @@ class MainActivity : ComponentActivity() {
                 val density = LocalDensity.current
                 val bottom = with(density){ WindowInsets.systemBars.getBottom(density).toDp() }
 
-//                Box {
-//
-//
-//                    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                        Column(modifier = Modifier
-//                            .padding(innerPadding)
-//                            .fillMaxSize(),
-//                            horizontalAlignment = Alignment.CenterHorizontally,
-//                            verticalArrangement = Arrangement.Center) {
-//                            if(imageBitmap.value != null) Image(bitmap = imageBitmap.value!!, contentDescription ="image" )
-//                            Button(onClick = {
-//                                show.value = true
-//
-//                            }) {
-//                                Text(text = "Press me")
-//                            }
-//                        }
-//                    }
-//
-//                    if(show.value){
-//                       Box (modifier = Modifier
-//                           .fillMaxSize()
-//                           .background(Color.Black.copy(alpha = 0.3f))
-//                           .clickable(
-//                               enabled = true,
-//                               onClickLabel = "onClickLabel",
-//                               onClick = {
-//                                   if (interactionEnabled.value) {
-//                                       showAnim.value = false
-//                                       interactionEnabled.value = false
-//                                   }
-//                               },
-//                               role = null,
-//                               indication = null,
-//                               interactionSource = remember { MutableInteractionSource() }
-//                           )
-//                       ){
-//
-//
-//                          Box(modifier = Modifier.align(Alignment.BottomCenter)) {
-//
-//                              LaunchedEffect(Unit) {
-//                                  showAnim.value = true
-//                              }
-//
-//                              AnimatedVisibility(
-//                                  visible = showAnim.value,
-//                                  enter = slideInVertically {
-//                                      // Slide in from
-//                                      with(density) { 200.dp.roundToPx() }
-//                                  } + expandVertically(
-//                                      animationSpec =
-//                                          spring(
-//                                              stiffness = 800f,
-//                                          ),
-//                                      expandFrom = Alignment.Bottom
-//                                  ) + fadeIn(
-//                                      // Fade in with the initial alpha of 0.3f.
-//                                      initialAlpha = 0.3f
-//                                  ),
-//                                  exit = slideOutVertically{
-//                                      with(density) { 200.dp.roundToPx() }
-//                                  }  + fadeOut()
-//                              ) {
-//
-//                                  DisposableEffect(Unit){
-//                                      onDispose {
-//                                          //reset
-//                                       show.value = false
-//                                       interactionEnabled.value = true
-//                                      }
-//                                  }
-//
-//
-//                                  IntentChooserImage(
-//                                      enabled = interactionEnabled.value,
-//                                      authorityFilerProvider = "${ctx.packageName}.fileprovider",
-//                                      top = {
-//                                            Row(modifier = Modifier.fillMaxWidth()
-//                                                .padding(15.dp),
-//                                                horizontalArrangement = Arrangement.Center) {
-//                                                Text(text = "PICK A IMAGE")
-//                                            }
-//                                      },
-//                                      bottom = {
-//                                          Spacer(modifier = Modifier
-//                                              .height(bottom)
-//                                              .fillMaxWidth())
-//                                      }
-//                                  ) {
-//                                      //if null show error
-//                                      imageBitmap.value =
-//                                          IntentChooser.Helper.getBitmapSampling(ctx, it, 500, 500)
-//                                              ?.asImageBitmap()
-//                                      showAnim.value = false
-//                                  }
-//
-//                              }
-//                          }
-//                       }
-//                    }
-//
-//                }
+                Box {
+
+
+                    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                        Column(modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center) {
+                            if(imageBitmap.value != null) Image(bitmap = imageBitmap.value!!, contentDescription ="image" )
+                            Button(onClick = {
+                                show.value = true
+
+                            }) {
+                                Text(text = "Press me")
+                            }
+                        }
+                    }
+
+                    if(show.value){
+                       Box (modifier = Modifier
+                           .fillMaxSize()
+                           .background(Color.Black.copy(alpha = 0.3f))
+                           .clickable(
+                               enabled = true,
+                               onClickLabel = "onClickLabel",
+                               onClick = {
+                                   if (interactionEnabled.value) {
+                                       showAnim.value = false
+                                       interactionEnabled.value = false
+                                   }
+                               },
+                               role = null,
+                               indication = null,
+                               interactionSource = remember { MutableInteractionSource() }
+                           )
+                       ){
+
+
+                          Box(modifier = Modifier.align(Alignment.BottomCenter)) {
+
+                              LaunchedEffect(Unit) {
+                                  showAnim.value = true
+                              }
+
+                              AnimatedVisibility(
+                                  visible = showAnim.value,
+                                  enter = slideInVertically {
+                                      // Slide in from
+                                      with(density) { 200.dp.roundToPx() }
+                                  } + expandVertically(
+                                      animationSpec =
+                                          spring(
+                                              stiffness = 800f,
+                                          ),
+                                      expandFrom = Alignment.Bottom
+                                  ) + fadeIn(
+                                      // Fade in with the initial alpha of 0.3f.
+                                      initialAlpha = 0.3f
+                                  ),
+                                  exit = slideOutVertically{
+                                      with(density) { 200.dp.roundToPx() }
+                                  }  + fadeOut()
+                              ) {
+
+                                  DisposableEffect(Unit){
+                                      onDispose {
+                                          //reset
+                                       show.value = false
+                                       interactionEnabled.value = true
+                                      }
+                                  }
+
+
+                                  IntentChooserImage(
+                                      enabled = interactionEnabled.value,
+                                      authorityFilerProvider = "${ctx.packageName}.fileprovider",
+                                      top = {
+                                            Row(modifier = Modifier.fillMaxWidth()
+                                                .padding(15.dp),
+                                                horizontalArrangement = Arrangement.Center) {
+                                                Text(text = "PICK A IMAGE")
+                                            }
+                                      },
+                                      bottom = {
+                                          Spacer(modifier = Modifier
+                                              .height(bottom)
+                                              .fillMaxWidth())
+                                      }
+                                  ) {
+                                      //if null show error
+                                      imageBitmap.value =
+                                          IntentChooser.Helper.getBitmapSampling(ctx, it, 500, 500)
+                                              ?.asImageBitmap()
+                                      showAnim.value = false
+                                  }
+
+                              }
+                          }
+                       }
+                    }
+
+                }
             }
         }
     }
