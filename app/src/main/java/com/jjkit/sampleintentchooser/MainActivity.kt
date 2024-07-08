@@ -51,9 +51,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import com.jjkit.intentchooser.IntentChooser
-import com.jjkit.intentchooser.IntentChooserImage
-import com.jjkit.intentchooser.getBitmapSampling
 import com.jjkit.sampleintentchooser.ui.theme.SampleintentchooserTheme
 
 class MainActivity : ComponentActivity() {
