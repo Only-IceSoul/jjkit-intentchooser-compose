@@ -48,7 +48,7 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.tooling)
+    implementation(libs.androidx.ui.tooling) //important
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -60,7 +60,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.jjkit"
             artifactId = "intentchooser"
-            version = "1.2"
+            version = "1.3"
 
             afterEvaluate {
                 from(components["release"])
