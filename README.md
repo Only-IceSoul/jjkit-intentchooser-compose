@@ -36,7 +36,7 @@ zipStorePath=wrapper/dists
 2B.-libs.versions.toml
 
 ```
-intentChooser = "1.2"
+intentChooser = "1.3"
 
 jjkit-intentchooser = { module = "com.github.Only-IceSoul:jjkit-intentchooser-compose", version.ref = "intentChooser" }
 
