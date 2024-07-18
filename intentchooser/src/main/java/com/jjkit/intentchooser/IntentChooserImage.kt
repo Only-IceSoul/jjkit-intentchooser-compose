@@ -3,6 +3,7 @@ package com.jjkit.intentchooser
 import android.Manifest
 import android.app.Activity
 import android.net.Uri
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.runtime.Composable
@@ -60,16 +61,12 @@ fun IntentChooserImage(enabled:Boolean,authorityFilerProvider:String,
             } else {
                 permissionCamera.launch()
             }
-        } else if (ri.activityInfo.packageName.contains("document", true)) {
-
-            if (permissionReadWrite.state[permissionReadWrite.permissions[0]] == IntentChooser.PermissionStatus.GRANTED) {
+        } else {
+            if (permissionReadWrite.state[permissionReadWrite.permissions[0]] == IntentChooser.PermissionStatus.GRANTED && permissionReadWrite.state[permissionReadWrite.permissions[1]] == IntentChooser.PermissionStatus.GRANTED) {
                 launcher.launch(it)
             } else {
                 permissionReadWrite.launch()
             }
-        } else {
-            launcher.launch(it)
-            //start activity
         }
 
 //        if (ri.activityInfo.name.contains("camera", true)) {
